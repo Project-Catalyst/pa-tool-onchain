@@ -9,6 +9,7 @@
     <div class="column is-2">
       <BRate
         v-model="rateValue"
+        :max-value="props.criterium.maxRating"
         :label-text="`Rating for ${props.criterium.title}`"
         :readonly="isSubmitted"
       />

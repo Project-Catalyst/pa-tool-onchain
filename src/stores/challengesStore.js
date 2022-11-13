@@ -1,7 +1,7 @@
 import { readonly, ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { useFundsStore } from "./fundsStore";
-import criteria from "@/assets/data/criteria.json";
+// import criteria from "@/assets/data/criteria.json";
 import challenges from "@/assets/data/f9/categories.json";
 
 export const useChallengesStore = defineStore(
@@ -29,8 +29,18 @@ export const useChallengesStore = defineStore(
       return all.value.find(({ id }) => id === challengeId);
     }
 
-    function getCriteria(challengeId) {
-      return criteria.filter(({ challenges }) => challenges.includes(challengeId));
+    function getCriteria(/* challengeId */) {
+      // return criteria.filter(({ challenges }) => challenges.includes(challengeId));
+      return fundsStore.selectedFund.challenges.assessmentsCriteria.map((criterium) => {
+        return {
+          c_id: criterium.id,
+          title: criterium.title,
+          question: criterium.description,
+          maxRating: criterium.maxRating,
+          // minRating: criterium.minRating,
+          // stepRating: criterium.stepRating,
+        };
+      });
     }
 
     watch(
