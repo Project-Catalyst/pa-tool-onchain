@@ -26,6 +26,7 @@
           </td>
           <td class="is-flex is-justify-content-end">
             <button
+              v-if="fundsStore.isOpenedForAssessmentPublishing"
               class="button is-small is-danger is-outlined"
               :disabled="walletStore.isTxSubmitting || walletStore.isTxConfirming"
               @click="assessmentPublicationsStore.moveUpcomingToPending(assessment.proposalId)"

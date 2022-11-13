@@ -26,6 +26,7 @@
           </td>
           <td class="is-flex is-justify-content-end">
             <button
+              v-if="fundsStore.isOpenedForAssessmentPublishing"
               class="button is-small is-primary is-outlined"
               :disabled="walletStore.isTxSubmitting || walletStore.isTxConfirming"
               @click="assessmentPublicationsStore.movePendingToUpcoming(assessment.proposalId)"
@@ -52,9 +53,11 @@
 </template>
 
 <script setup>
+import { useFundsStore } from "@/stores/fundsStore";
 import { useWalletStore } from "@/stores/walletStore";
 import { useAssessmentPublicationsStore } from "@/stores/assessmentPublicationsStore";
 
+const fundsStore = useFundsStore();
 const walletStore = useWalletStore();
 const assessmentPublicationsStore = useAssessmentPublicationsStore();
 </script>
